@@ -9,18 +9,17 @@
  * Controller of ASPStore
  */
 angular.module('ASPStore')
-  .controller('DashboardCtrl', function($scope, $location, $localStorage,$http) {
+  .controller('DashboardCtrl', function($scope, $location, $localStorage,requestService) {
 
-    var ip ='http://172.24.3.8:9000';
-    $scope.infoData = [{ "id" : "01", "description" : "Articulo de venta..."}];
+    var configs = {method:'GET',url:'http://172.24.3.8:9000/getProducts',params:''};
+    var data = null;
 
-    $scope.getProducts = function(name){
-      $http.get(ip+'/getProducts').success(function(response){
-		      $scope.infoData = response;
-		  });
-    };
 
-    $scope.getProducts('Marcos');
+    requestService.request(configs, data, function(response){
+        console.log(response.success);
+        //success
+        //data
+    });
 
 
   });
