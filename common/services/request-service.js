@@ -18,7 +18,6 @@ angular.module('ASPStore')
                           {
                                 method: configs.method,
                                 url: configs.url + configs.params,
-                                headers: configs.headers,
                                 data: data
                           })
                           .then(function(response) {
