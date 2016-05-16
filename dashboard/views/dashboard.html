@@ -1,6 +1,6 @@
 <div>
 	<h1>Dashboard view</h1>
-	<h3>AGREGAR PRODUCTOS<h3>
+	<h3>AGREGAR PRODUCTOS</h3>
 	<input ng-model = "dash.nombre" type="text" placeholder="Nombre">
 	<input ng-model = "dash.description" type="text" placeholder="Descripcion">
 	<button ng-click="dash.addProducts(dash.nombre,dash.description)" class="btn btn-white btn-outline btn-lg btn-rounded">Agregar Producto</button>
@@ -9,27 +9,21 @@
 	<br>
 	<br>
 
-	<ul>
+
+	<ul class="tab">
 		<h3>LISTA DE PRODUCTOS</h3>
 		<li ng-repeat = 'product in dash.productos | filter: dash.buscarText' >
 			ID: {{product._id}}  Nombre:{{product.name}}   Descripcion: {{product.description}}
 		</li>
 	</ul>
 
-		<div ng-cloak>
-			<md-content>
-				<md-tabs md-dynamic-height md-border-bottom>
-					<md-tab ng-repeat = 'product in dash.productos | filter: dash.buscarText' label="{{product.name}}">
-						<md-content class="md-padding">
-							<h1 class="md-display-2">{{product.name}}</h1>
-							<p>{{product.description}}</p>
-						</md-content>
-					</md-tab>
-					</md-tabs>
-				</md-content>
-			</div>
-
-
-
-	<button ng-click="dash.refreshProducts()" class="btn btn-white btn-outline btn-lg btn-rounded">Refrescar Productos</button>
+<!--
+	<tabset>
+		<tab ng-repeat="product in dash.productos"
+			 heading="{{product._id}}"
+			 active=product.active>
+			{{product.name}} - {{product.description}}
+		</tab>
+	</tabset>
+-->
 </div>

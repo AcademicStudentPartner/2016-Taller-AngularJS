@@ -63,6 +63,6 @@ angular.module('ASPStore')
             }
        });
      }
-     //this.refreshProducts();
+      refreshProducts();
 
   });
