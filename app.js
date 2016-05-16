@@ -19,7 +19,7 @@ angular
     $stateProvider
       .state('base', {
         abstract: true,
-        url: '',
+        url: "",
         templateUrl: 'common/views/base.html'
       })
         .state('login', {
@@ -38,6 +38,6 @@ angular
           url: '/dashboard/dashboard',
           parent: 'base',
           templateUrl: 'dashboard/views/dashboard.html',
-          controller: 'DashboardCtrl'
+          controller: 'DashboardCtrl as dash'
         })
   });

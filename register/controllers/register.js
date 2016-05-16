@@ -10,25 +10,27 @@
 'use strict';
 
 angular.module('ASPStore')
-  .controller('RegisterCtrl', function($scope, $location, $localStorage) {
+  .controller('RegisterCtrl', function($scope, $location,  $localStorage) {
 
-    $scope.username ="";
-    $scope.password ="";
+    $scope.username = "";
+    $scope.password = "";
+    $scope.name = "";
+    $scope.age = "";
 
     $scope.register = function(){
-
       if($scope.username != "" && $scope.password != ""){
-
-        if($localStorage.usersArray === undefined){
-          $localStorage.usersArray = [{'username':$scope.username,'password':$scope.password}];
-        }else {
-          $localStorage.usersArray.push({'username':$scope.username,'password':$scope.password});
+        if($localStorage.userArray == undefined){
+          $localStorage.userArray = [{'username':$scope.username,'password':$scope.password,'name':$scope.name,'age':$scope.age}];
         }
+        else{
+          $localStorage.userArray.push({'username':$scope.username,'password':$scope.password,'name':$scope.name,'age':$scope.age});
+        }
+        alert("Usuario agregado");
         $location.path('/login');
+     }else{
+      alert("Datos invalidos");
+     }
 
-      }else {
-        alert("Invalid user information!");
-      }
-    }
+   }
 
   });

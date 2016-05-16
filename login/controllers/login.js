@@ -9,15 +9,14 @@
  * Controller of ASPStore
  */
 angular.module('ASPStore')
-  .controller('LoginCtrl',  function($scope, $location, $localStorage) {
-  	//$scope.userId = undefined;
-  	$scope.login = function (uId, pass) {
-        angular.forEach($localStorage.usersArray, function(value, key) {
-          if(uId == value.username && pass == value.password){
-            $localStorage.currentUser = value;
-            $location.path('/dashboard/dashboard');
-          }
-        });
-  	};
+  .controller('LoginCtrl',  function($scope, $location, $localStorage, loginService) {
 
+    $scope.login = function (uId, pass) {
+      if(loginService.getUserLogin(uId,pass).status){
+        $location.path('/dashboard/dashboard');
+      }
+      else{
+        alert("Usuario invalido");
+      }
+  	};
   });

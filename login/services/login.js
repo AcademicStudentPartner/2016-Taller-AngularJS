@@ -8,18 +8,24 @@
  * #  servicio de ingreso al sistema
  */
 
-angular.module('ASPStore').factory('loginService', function() {
-	var defaultUser = "";
-	var defaultPassword = "";
-	var getUserInfo = function () {
+angular.module('ASPStore').factory('loginService', function($localStorage) {
+
+	var bandera = false;
+	var getLogin = function(uId, pass){
+		angular.forEach($localStorage.userArray,function(value,key){
+			if(uId == value.username && pass == value.password){
+				$localStorage.currentUser = value;
+				bandera = true;
+			}
+		});
 		return {
-			username: defaultUser,
-			password: defaultPassword
+			status: bandera
 		};
 	};
 
 	return {
-		getUserInformation: getUserInfo
-		};
-    }
-);
+		getUserLogin: getLogin
+
+	};
+
+});
